@@ -1,0 +1,28 @@
+{
+  "translation": {
+    "CANCEL": "Annuler",
+    "GROUP_NAME": "Nom de groupe",
+    "BOOKED_DATE": "Date de réservation",
+    "ADD_BOOKING": "Ajouter une réservation",
+    "": "Ajouter un tribunal",
+    "SHARE": "Partager",
+    "BLOCK": "Bloc",
+    "TOTAL_INCOME": "Revenu ",
+    "HELLO": "Xin chào",
+    "EMPTY_ACTIVITY": "Bạn chưa có hoạt động nào!",
+    "PASSWORD": "Mật khẩu",
+    "LANGUAGE": "Ngôn ngữ",
+    "ENGLISH": "Tiếng Anh",
+    "VIETNAMESE": "Tiếng Việt",
+    "STATUS": "Trạng thái",
+    "PRIORITY": "Độ ưu tiên",
+    "LAST_UPDATE": "Cập nhật lần cuối",
+    "LOCATION": "Vị trí",
+    "NOTIFICATION": "Thông báo",
+    "HELP": "Trợ giúp",
+    "LOGOUT": "Đăng xuất",
+    "FULL_NAME": "Họ tên",
+    "TEMPERATURE": "Thời tiết",
+    "PROFILE": "Trang cá nhân"
+  }
+}
