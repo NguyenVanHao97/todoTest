@@ -12,10 +12,7 @@ export interface LoginProps {
 export interface InitialStateProps {
   expireLogin: boolean;
   loading: boolean;
-  error: string | null;
   user: LoginProps | null;
-  success: boolean;
-  time: string | null;
   login: ({email, password, time}: LoginProps) => void;
   resetStore: () => void;
   logout: () => void;

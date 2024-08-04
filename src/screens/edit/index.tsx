@@ -4,6 +4,7 @@ import {
   Alert,
   Button,
   Platform,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -23,6 +24,7 @@ import {RouteProp, useRoute} from '@react-navigation/native';
 import {formSchemaEdit} from '../../ultils/formSchema';
 import {zodResolver} from '@hookform/resolvers/zod';
 import RNCalendarEvents, {Calendar} from 'react-native-calendar-events';
+import FlashMessage, {showMessage} from 'react-native-flash-message';
 
 interface ParamList {
   [key: string]: {
@@ -43,7 +45,9 @@ const convertToInValidDate = (mil: number) => {
 
 const EditTodo = ({navigation}: any = {}) => {
   const editTodo = useStoreTodo((state: {editTodo: any}) => state.editTodo);
-  const createNew = useStoreTodo(state => state.createNewTodo);
+  const createNew = useStoreTodo(
+    (state: {createNewTodo: any}) => state.createNewTodo,
+  );
   const route = useRoute<RouteProp<ParamList, 'ItemScreen'>>();
   const [pickedCal, setPickedCal] = useState<Calendar | undefined>(undefined);
   const {item, type} = route.params;
@@ -54,8 +58,6 @@ const EditTodo = ({navigation}: any = {}) => {
     priority = 'low',
   } = item;
   const isCreateBtn = type === 'CREATE';
-
-  console.log('>>>item', item);
 
   const id = new Date().getTime();
   const {setValue, control, handleSubmit} = useForm({
@@ -88,26 +90,33 @@ const EditTodo = ({navigation}: any = {}) => {
   const onSubmit = async (data: ITodo) => {
     setTimeout(async () => {
       const dateTime = new Date().getTime();
-      console.log('>>>pickedCal?.id ', pickedCal?.id);
       if (isCreateBtn) {
         createNew({...data, lastUpdate: dateTime});
         try {
           await RNCalendarEvents.saveEvent(data.name, {
             calendarId: Platform.OS === 'android' ? pickedCal?.id : undefined,
-            // calendarId:data.id.toString()
             startDate: new Date(data.executionTime.date).toISOString(),
             endDate: new Date(data.executionTime.date).toISOString(),
             notes: data.des,
             description: data.des,
           }).then(() => {
-            // Alert.alert('save event success');
             console.log('save event success');
+            showMessage({
+              message: 'Success',
+              description: 'Calendar event saved successfully',
+              type: 'success',
+            });
           });
         } catch (error) {
           console.log('Error while saving event:', error);
         }
       } else {
         editTodo(data.id, {...data, lastUpdate: dateTime});
+        showMessage({
+          message: 'Success',
+          description: 'Edit Success',
+          type: 'success',
+        });
       }
       navigation.goBack();
     }, 1000);
@@ -151,6 +160,11 @@ const EditTodo = ({navigation}: any = {}) => {
         />
       </TouchableOpacity>
       <View style={styles.container}>
+        <FlashMessage
+          hideStatusBar={false}
+          statusBarHeight={StatusBar.currentHeight}
+          position="top"
+        />
         <View>
           <Text style={{fontWeight: '600', fontSize: 20, color: 'black'}}>
             Thời gian thực hiện
@@ -204,7 +218,6 @@ const EditTodo = ({navigation}: any = {}) => {
             maxLength={200}
             multiline={true}
             style={{
-              height: 40,
               padding: 10,
               borderRadius: 11,
               backgroundColor: 'white',

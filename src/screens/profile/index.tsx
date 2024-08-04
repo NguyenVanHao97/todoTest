@@ -3,6 +3,7 @@
 import {
   ActivityIndicator,
   Image,
+  StatusBar,
   StyleSheet,
   Switch,
   Text,
@@ -14,21 +15,32 @@ import {useAuthFacade} from '../../store/auth/useAuthFacade';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SwitchLanguage from '../../components/SwitchLanguage';
 import {useTranslation} from 'react-i18next';
+import FlashMessage, {showMessage} from 'react-native-flash-message';
 
 const ProfileScreen = () => {
   const {logout, user} = useAuthFacade();
   const [loading, setLoading] = useState(false);
   const {t} = useTranslation();
 
-  const handleLogout = () => {
-    setLoading(true);
-    setTimeout(() => {
-      logout();
-      setLoading(false);
-    }, 3000);
+  const handleLogout = async () => {
+    try {
+      await logout();
+      showMessage({
+        message: 'Success',
+        description: 'Logout Success',
+        type: 'success',
+      });
+    } catch (error) {
+      console.error('Logout failed', error);
+    }
   };
   return (
     <View style={styles.container}>
+      <FlashMessage
+        hideStatusBar={false}
+        statusBarHeight={StatusBar.currentHeight}
+        position="top"
+      />
       <>
         <Text style={styles.title}>{t('PROFILE')}</Text>
         <View style={{position: 'absolute', right: 12, top: 6}}>

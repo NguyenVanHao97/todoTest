@@ -27,15 +27,15 @@ const Dropdown: FC<Props> = ({label, data, control, name, ...otherParam}) => {
           render={({field: {onChange}}) => (
             <View style={styles.dropdown}>
               {data.map((item, index) => {
+                const lastItem = data[data.length - 1];
                 return (
                   <TouchableOpacity
                     key={`${index}_${item}`}
                     style={{
                       flex: 1,
                       width: '100%',
-                      //   marginVertical: 12,
                       paddingVertical: 12,
-                      borderBottomWidth: 1,
+                      borderBottomWidth: item === lastItem ? 0 : 1,
                       borderColor: 'gray',
                     }}
                     onPress={() => {

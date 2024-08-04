@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {ITodo} from './interfaces';
 import {persist} from 'zustand/middleware';
 import create from 'zustand';
@@ -110,6 +111,20 @@ const saveTodosToLocalStorage = async (todos: ITodo[]) => {
   }
 };
 
+const getUserFromLocal = async () => {
+  try {
+    const user = await AsyncStorage.getItem('user');
+    if (user) {
+      return JSON.parse(user);
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error('Failed to retrieve user credentials:', error);
+    return null;
+  }
+};
+
 const useStoreTodo = create<any>(
   persist<any>(
     set => ({
@@ -122,6 +137,7 @@ const useStoreTodo = create<any>(
         setCompleteTask(set, tId, ItemId),
       initializeTodos: async () => {
         const todos = (await getLocalStorage('todos')) ?? [];
+        const user = await getUserFromLocal();
         set({todos});
       },
     }),

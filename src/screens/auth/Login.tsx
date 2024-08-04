@@ -24,8 +24,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import SwitchLanguage from '../../components/SwitchLanguage';
 
 const Login = ({route, navigation}: any) => {
-  const {login, success, error, resetStore} = useAuthFacade();
-  const [loading, setLoading] = React.useState(false);
+  const {login, loading, resetStore} = useAuthFacade();
+  // const [loading, setLoading] = React.useState(false);
   const {isOnBoarding} = route.params;
 
   const {control, handleSubmit} = useForm({
@@ -37,36 +37,24 @@ const Login = ({route, navigation}: any) => {
   });
 
   const onSubmit = (data: IAuthForm) => {
-    setLoading(true);
     const dataValue = {...data, time: Date.now().toString()};
-
-    setTimeout(() => {
-      login({
-        email: data.email,
-        password: data.password,
-        time: Date.now().toString(),
-      });
-      setLoading(false);
-      showMessage({
-        message: 'Success',
-        description: 'The Event has been created',
-        type: 'success',
-      });
-      AsyncStorage.setItem('auth', JSON.stringify(dataValue));
-      AsyncStorage.setItem('onBoarding', 'true');
-    }, 2000);
+    login({
+      email: data.email,
+      password: data.password,
+      time: Date.now().toString(),
+    });
+    showMessage({
+      message: 'Success',
+      description: 'Login Success',
+      type: 'success',
+    });
+    AsyncStorage.setItem('auth', JSON.stringify(dataValue));
+    AsyncStorage.setItem('onBoarding', 'true');
   };
 
   useEffect(() => {
     resetStore();
-    if (success) {
-      showMessage({message: 'Logged In Successfully', type: 'success'});
-    }
-
-    if (error) {
-      showMessage({message: error, type: 'danger'});
-    }
-  }, [error, resetStore, success]);
+  }, [resetStore]);
 
   return (
     <View style={styles.container}>

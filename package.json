@@ -28,6 +28,7 @@
     "react-hook-form": "^7.52.1",
     "react-i18next": "^15.0.0",
     "react-native": "0.74.4",
+    "react-native-bootsplash": "^6.1.0",
     "react-native-calendar-events": "^2.2.0",
     "react-native-date-picker": "^5.0.4",
     "react-native-flash-message": "^0.4.2",

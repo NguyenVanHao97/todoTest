@@ -4,20 +4,21 @@ import {
   Button,
   FlatList,
   Platform,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {ITodo} from '../../store/todo/interfaces';
 import useStoreTodo from '../../store/todo/useStore';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {bgTagPriority, bgTagStatus, bgTagTitle} from '../../ultils/ultil';
 import {useAuthFacade} from '../../store/auth/useAuthFacade';
-import RNCalendarEvents, {Calendar} from 'react-native-calendar-events';
 import EmptyTodo from '../../components/EmptyTodo';
 import {useTranslation} from 'react-i18next';
+import FlashMessage, {showMessage} from 'react-native-flash-message';
 const HomeScreen = (props: any) => {
   const {t} = useTranslation();
   const {user} = useAuthFacade();
@@ -88,10 +89,12 @@ const HomeScreen = (props: any) => {
           </Text>
         </View>
         <View>
-          <Text style={{color: 'black'}}>{t('LAST_UPDATE')}</Text>
+          <Text style={{color: 'black'}}>Chi tiết </Text>
+          <Text>{item.des}</Text>
+          {/* <Text style={{color: 'black'}}>{t('LAST_UPDATE')}</Text>
           <Text style={{marginVertical: 4}}>
             {new Date(item.lastUpdate).toLocaleString()}
-          </Text>
+          </Text> */}
         </View>
       </View>
 
@@ -112,6 +115,11 @@ const HomeScreen = (props: any) => {
               style={{marginRight: 10}}
               onPress={() => {
                 deleteTodo(item.id);
+                showMessage({
+                  message: 'Success',
+                  description: 'Delete Success',
+                  type: 'success',
+                });
               }}
             />
           </TouchableOpacity>
@@ -169,6 +177,11 @@ const HomeScreen = (props: any) => {
   );
   return (
     <View style={styles.container}>
+      <FlashMessage
+        hideStatusBar={false}
+        statusBarHeight={StatusBar.currentHeight}
+        position="top"
+      />
       <Text style={{fontSize: 16, color: 'black', fontWeight: '600'}}>
         {t('HELLO')}! {user?.email}
       </Text>
