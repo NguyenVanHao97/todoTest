@@ -23,6 +23,14 @@
     "LOGOUT": "Log out",
     "FULL_NAME": "Full name",
     "TEMPERATURE": "Temperature",
-    "PROFILE": "Profile"
+    "PROFILE": "Profile",
+    "DETAIL": "Detail",
+    "NAME": "Todo Name",
+    "ENTER_PASSWORD": "Enter Password",
+    "LOGIN": "Login",
+    "EMAIL_REQUIRED": "Email is required",
+    "PASSWORD_REQUIRED": "Password is required",
+    "EMAIL_INVALID": "Email is invalid",
+    "PASSWORD_INVALID": "Password is invalid"
   }
 }

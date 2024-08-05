@@ -10,6 +10,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import React, {useEffect} from 'react';
 import {useForm} from 'react-hook-form';
@@ -22,8 +23,10 @@ import FlashMessage, {showMessage} from 'react-native-flash-message';
 import {useAuthFacade} from '../../store/auth/useAuthFacade';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SwitchLanguage from '../../components/SwitchLanguage';
+import {useTranslation} from 'react-i18next';
 
 const Login = ({route, navigation}: any) => {
+  const {t} = useTranslation();
   const {login, loading, resetStore} = useAuthFacade();
   // const [loading, setLoading] = React.useState(false);
   const {isOnBoarding} = route.params;
@@ -117,11 +120,11 @@ const Login = ({route, navigation}: any) => {
       </View>
 
       <View>
-        <Text style={styles.label}>Password</Text>
+        <Text style={styles.label}>{t('PASSWORD')}</Text>
         <FormInput
           control={control}
           name="password"
-          placeholder="Vui lòng nhập Password"
+          placeholder={t('ENTER_PASSWORD')}
           style={{
             height: 40,
             padding: 10,
@@ -140,7 +143,7 @@ const Login = ({route, navigation}: any) => {
           }}>
           {loading && <ActivityIndicator size="large" color="white" />}
           <Text style={styles.buttonText}>
-            {loading ? ' Loading' : 'Login'}
+            {loading ? ' Loading' : t('LOGIN')}
           </Text>
         </View>
       </TouchableOpacity>

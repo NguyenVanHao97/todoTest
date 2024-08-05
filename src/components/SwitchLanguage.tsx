@@ -5,7 +5,6 @@ import React, {useEffect, useState} from 'react';
 import {Switch} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18next from 'i18next';
-import {ToggleButton} from 'react-native-paper';
 import {useTranslation} from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -21,13 +20,19 @@ const SwitchLanguage = () => {
     {id: 'en', label: t('ENGLISH')},
   ];
 
+  const onPressItemLang = (language: string) => {
+    AsyncStorage.setItem('language', language);
+    setSelectedLanguage(language);
+    setVisible(false);
+    i18next.changeLanguage(language);
+  };
   useEffect(() => {
     const getLanguage = async () => {
       try {
         const getLanguageValue = await AsyncStorage.getItem('language');
         if (getLanguageValue !== null) {
-          setSelectedLanguage(getLanguageValue);
           i18next.changeLanguage(getLanguageValue);
+          setSelectedLanguage(getLanguageValue);
         }
       } catch (error) {
         console.error(error);
@@ -35,14 +40,6 @@ const SwitchLanguage = () => {
     };
     getLanguage();
   }, []);
-
-  const onPressItemLang = (language: string) => {
-    AsyncStorage.setItem('language', language);
-    setSelectedLanguage(language);
-    setVisible(false);
-    i18next.changeLanguage(language);
-  };
-
   const renderDropdown = () => {
     if (visible) {
       return (

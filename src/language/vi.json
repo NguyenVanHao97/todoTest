@@ -23,6 +23,14 @@
     "LOGOUT": "Đăng xuất",
     "FULL_NAME": "Họ tên",
     "TEMPERATURE": "Thời tiết",
-    "PROFILE": "Trang cá nhân"
+    "PROFILE": "Trang cá nhân",
+    "DETAIL": "Chi tiết",
+    "NAME": "Tên hoạt động",
+    "ENTER_PASSWORD": "Vui lòng nhập mật khẩu",
+    "LOGIN": "Đăng nhập",
+    "EMAIL_REQUIRED": "Email là bắt buộc",
+    "PASSWORD_REQUIRED": "Mật này là bắt buộc",
+    "EMAIL_INVALID": "Email không hợp lệ",
+    "PASSWORD_INVALID": "Mật này không hợp lệ"
   }
 }

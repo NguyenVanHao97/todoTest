@@ -6,7 +6,11 @@ export const formSchema = z.object({
     .trim()
     .min(1, 'Email is required')
     .email('Please enter a valid email'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
+  password: z
+    .string()
+    .trim()
+    .min(1, 'Email is required')
+    .min(8, 'Password must be at least 8 characters'),
 });
 
 export const formSchemaEdit = z.object({

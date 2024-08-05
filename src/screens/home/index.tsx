@@ -70,31 +70,36 @@ const HomeScreen = (props: any) => {
             </Text>
           </View>
         </View>
+        <View>
+          <Text style={{color: 'black'}}>{t('NAME')} </Text>
+          <Text
+            style={{
+              fontWeight: 'bold',
+              marginRight: 6,
+              fontSize: 16,
+              color: 'black',
+            }}
+            key={`${index}_${item.id}`}>
+            {item.name}
+          </Text>
+        </View>
 
-        <Text
-          style={{
-            fontWeight: 'bold',
-            marginRight: 6,
-            fontSize: 16,
-            color: 'black',
-          }}
-          key={`${index}_${item.id}`}>
-          {item.name}
-        </Text>
+        <View>
+          <Text style={{color: 'black'}}>{t('DETAIL')} </Text>
+          <Text>{item.des}</Text>
+        </View>
         <View style={{marginTop: 12}}>
           <Text style={{color: 'black'}}>Thời gian thực hiện</Text>
           <Text style={{marginVertical: 4}}>
-            {new Date(item.executionTime.date).toLocaleDateString()}{' '}
+            {new Date(item.executionTime.date).toLocaleDateString()}
             {new Date(item.executionTime.time).toLocaleTimeString()}
           </Text>
         </View>
         <View>
-          <Text style={{color: 'black'}}>Chi tiết </Text>
-          <Text>{item.des}</Text>
-          {/* <Text style={{color: 'black'}}>{t('LAST_UPDATE')}</Text>
+          <Text style={{color: 'black'}}>{t('LAST_UPDATE')}</Text>
           <Text style={{marginVertical: 4}}>
             {new Date(item.lastUpdate).toLocaleString()}
-          </Text> */}
+          </Text>
         </View>
       </View>
 

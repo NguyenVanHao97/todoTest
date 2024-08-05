@@ -99,6 +99,7 @@ const EditTodo = ({navigation}: any = {}) => {
             endDate: new Date(data.executionTime.date).toISOString(),
             notes: data.des,
             description: data.des,
+            location: 'TP.Hồ chí minh',
           }).then(() => {
             console.log('save event success');
             showMessage({
