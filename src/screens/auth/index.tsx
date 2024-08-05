@@ -30,7 +30,7 @@ const AuthScreen = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={initScreen}
+      initialRouteName={'LoginScreen'}
       screenOptions={{headerShown: false}}>
       <Stack.Screen
         name="LoginScreen"
