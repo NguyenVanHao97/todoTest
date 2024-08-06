@@ -61,7 +61,7 @@ const Login = ({route, navigation}: any) => {
 
   return (
     <View style={styles.container}>
-      {!isOnBoarding ? (
+      {/* {!isOnBoarding ? (
         <TouchableOpacity
           style={{
             position: 'absolute',
@@ -85,7 +85,7 @@ const Login = ({route, navigation}: any) => {
             color="black"
           />
         </TouchableOpacity>
-      ) : null}
+      ) : null} */}
       <View style={{position: 'absolute', right: 12, top: 12}}>
         <SwitchLanguage />
       </View>
