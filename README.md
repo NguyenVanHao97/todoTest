@@ -1,6 +1,9 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Getting Started 
+
+## Note 
+Here is the drive link to download the APK file of this application. Please access the link to download the application: https://drive.google.com/file/d/1Iw-rsYa_g7HoAihk5IC6qxMg-Gt59LGg/view?usp=drive_link 
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
