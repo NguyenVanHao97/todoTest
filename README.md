@@ -11,10 +11,13 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 ## Note 
 Here is the drive link to download the APK file of this application. Please access the link to download the application: 
 ```bash
-https://drive.google.com/file/d/1Iw-rsYa_g7HoAihk5IC6qxMg-Gt59LGg/view?usp=drive_link .
+https://drive.google.com/file/d/1Iw-rsYa_g7HoAihk5IC6qxMg-Gt59LGg/view?usp=drive_link
 ```
 
-
+## Usage 
+```bash
+ This application works best on the Android platform. Please use the Android version for the best experience.
+```
 
 ## Step 1: Start the Metro Server
 
